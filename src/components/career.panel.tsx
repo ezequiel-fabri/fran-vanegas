@@ -1,31 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Tabs from "./tabs";
 import { tabs, Tab as Tab } from "@/constants/tabList";
 import ChapterTitle from "./chapter.title";
+import { Chapter2, Chapter3 } from "./animated.title";
 
 const CareerPanel = () => {
   const [currentTabs, setCurrentTabs] = useState<Tab[]>(tabs);
-  const [selectedTab, setSelectedTab] = useState<Tab>(tabs[2]);
+  // for switching the tab
+  const [selectedTab, setSelectedTab] = useState<Tab>(tabs[0]);
+  // for switching the content
+  const [activeTab, setActiveTab] = useState<Tab>(tabs[0]);
   const handleSelectTab = (newTab: Tab) => {
     if (newTab.id === selectedTab.id) return;
-    setCurrentTabs((prevTabs) =>
-      prevTabs.map((tab) => {
-        if (tab.id === selectedTab.id) return { ...tab, level: newTab.level };
-        if (tab.id === newTab.id) return { ...tab, level: 3 }; // to set the correct section background
-        return tab;
-      })
-    );
+    setCurrentTabs((prevTabs) => {
+      let newTabs = prevTabs.slice();
+      newTabs[selectedTab.id] = { ...selectedTab, level: newTab.level };
+      newTabs[newTab.id] = { ...newTab, level: 4 };
+      return newTabs;
+    });
     setSelectedTab(newTab);
+    setTimeout(() => setActiveTab(newTab), 300);
   };
 
-  const { text, title, backTitle, backTitleColor, sectionColor, id } =
-    selectedTab;
+  const { text, chapter, title, backTitle, backTitleColor, sectionColor, id } =
+    activeTab;
 
   const nextChapterLabel =
-    selectedTab.id !== 2
-      ? currentTabs[selectedTab.id + 1]?.chapter
-      : selectedTab.chapter;
+    activeTab.id !== tabs.length - 1
+      ? currentTabs[activeTab.id + 1]?.chapter
+      : activeTab.chapter;
+
+  const isLastChapter = activeTab.id === tabs.length - 1;
+
   return (
     <>
       <Tabs
@@ -34,17 +41,26 @@ const CareerPanel = () => {
         onSelectTab={handleSelectTab}
       />
       <section
-        className={`${sectionColor} transition-background delay-300 relative pt-8 pb-5 z-20 shadow-2`}
+        className={`${sectionColor} transition-background duration-150 relative pt-20 pb-5 z-30 shadow-2`}
       >
         <div className="container px-6 mx-auto max-w-[1300px]">
-          <ChapterTitle>CHAPTER {id + 1}</ChapterTitle>
+          {activeTab.id === 0 && (
+            <Chapter2 active={activeTab.id === 0}>CHAPTER {chapter}</Chapter2>
+          )}
+          {activeTab.id === 1 && <Chapter3>CHAPTER {chapter}</Chapter3>}
           <h1 className="font-bold text-center text-4xl my-20 mb-28 text-textBlack inline-block w-full uppercase relative">
             <span
-              className={`whitespace-nowrap tracking-wide text-[120px] z-0 ${backTitleColor} font-bold absolute left-1/2 -translate-x-1/2`}
+              className={`pointer-events-none whitespace-nowrap tracking-wide text-[120px] z-0 ${backTitleColor} font-bold absolute left-1/2 -translate-x-1/2`}
             >
               {backTitle}
             </span>
-            <span className="relative z-10 font-[800]">{title || text}</span>
+            <span
+              className={`relative z-10 font-[800] ${
+                isLastChapter ? "text-[#F7F7F7]" : ""
+              }`}
+            >
+              {title || text}
+            </span>
           </h1>
           <div className="relative h-[323px] flex max-w-[1050px] mb-28 mx-auto">
             <div className="mr-10 flex-1">
@@ -69,9 +85,20 @@ const CareerPanel = () => {
                 width={488}
                 height={323}
               />
+              <Image
+                src="/me_and_pancho.png"
+                alt="myself-doing-things"
+                className={`${id !== 3 && "hidden"}`}
+                width={488}
+                height={323}
+              />
             </div>
             <div className="flex flex-col justify-between flex-1">
-              <p className="font-bold first-letter:text-4xl">
+              <p
+                className={`font-bold first-letter:text-4xl ${
+                  isLastChapter ? "text-[#F7F7F7]" : ""
+                }`}
+              >
                 Cuando tenia 5 años tuve mi primer experiencia con una consola
                 de videojuegos, todos mis amigos estaban locos por comenzar a
                 jugar sin siquiera ver las introducciones brindadas por el mismo
@@ -89,7 +116,8 @@ const CareerPanel = () => {
           <ChapterTitle
             nextChapter={nextChapterLabel}
             small
-            lastChapter={selectedTab.id === 2}
+            lastChapter={isLastChapter}
+            caption={`${isLastChapter ? "To be continued..." : ""}`}
           >
             NEXT CHAPTER
           </ChapterTitle>

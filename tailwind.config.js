@@ -29,49 +29,78 @@ module.exports = {
         2: "0px -1px 4px rgba(0, 0, 0, 0.25)",
       },
       keyframes: {
-        shakingIn2: {
+        delayText: {
           "0%": {
-            "margin-bottom": "0px",
-            "z-index": 10,
-            "box-shadow": "3px 3px 0px 1px #000000",
+            opacity: "0",
           },
-          "50%": { "margin-bottom": "200px" },
           "100%": {
-            "margin-bottom": "60px",
-            "z-index": 30,
+            opacity: "1",
           },
         },
         shakingIn1: {
           "0%": {
-            "margin-bottom": "0px",
-            "z-index": 8,
+            transform: "translateY(0)",
+            "z-index": 10,
             "box-shadow": "3px 3px 0px 1px #000000",
           },
-          "50%": { "margin-bottom": "250px", "z-index": 8 },
+          "50%": { transform: "translateY(-250px)", "z-index": 10 },
           "100%": {
-            "margin-bottom": "60px",
+            transform: "translateY(-60px)",
+            "z-index": 40,
+          },
+        },
+
+        shakingIn2: {
+          "0%": {
+            transform: "translateY(0)",
+            "z-index": 20,
+            "box-shadow": "3px 3px 0px 1px #000000",
+          },
+          "50%": { transform: "translateY(-200px)", "z-index": 20 },
+          "100%": {
+            transform: "translateY(-60px)",
+            "z-index": 40,
+          },
+        },
+        shakingIn3: {
+          "0%": {
+            transform: "translateY(0)",
             "z-index": 30,
+            "box-shadow": "3px 3px 0px 1px #000000",
+          },
+          "50%": { transform: "translateY(-200px)", "z-index": 30 },
+          "100%": {
+            transform: "translateY(-60px)",
+            "z-index": 40,
           },
         },
         shakingOut1: {
-          // go all the way back
-          "0%": { "margin-bottom": "60px", "z-index": 30 },
-          "50%, 75%": { "margin-bottom": "210px", "z-index": 30 },
-          "75%": { "z-index": 8 },
+          "0%": { transform: "translateY(-60px)", "z-index": 40 },
+          "50%, 75%": { transform: "translateY(-210px)", "z-index": 40 },
+          "75%": { "z-index": 10 },
           "100%": {
-            "margin-bottom": "0px",
-            "z-index": 8,
+            transform: "translateY(0)",
+            "z-index": 10,
             "box-shadow": "3px 3px 0px 1px #000000",
           },
         },
         shakingOut2: {
-          // go behind the current selected tab
-          "0%": { "margin-bottom": "60px", "z-index": 30 },
-          "50%, 75%": { "margin-bottom": "188px", "z-index": 30 },
-          "75%": { "z-index": 10 },
+          "0%": { transform: "translateY(-60px)", "z-index": 40 },
+          "50%, 75%": { transform: "translateY(-188px)", "z-index": 40 },
+          "75%": { "z-index": 20 },
           "100%": {
             "margin-bottom": "0px",
-            "z-index": 10,
+            "z-index": 20,
+            "box-shadow": "3px 3px 0px 1px #000000",
+          },
+        },
+        shakingOut3: {
+          "0%": { transform: "translateY(-60px)", "z-index": 40 },
+          "50%, 75%": { transform: "translateY(-188px)", "z-index": 40 },
+          "75%": { "z-index": 30 },
+          "100%": {
+            "margin-bottom": "0px",
+            "z-index": 30,
             "box-shadow": "3px 3px 0px 1px #000000",
           },
         },
@@ -87,10 +116,13 @@ module.exports = {
       animation: {
         tabShakingIn1: "shakingIn1 .3s .1s linear both",
         tabShakingIn2: "shakingIn2 .3s .1s linear both",
+        tabShakingIn3: "shakingIn3 .3s .1s linear both",
         tabShakingOut1: "shakingOut1 .3s linear forwards",
         tabShakingOut2: "shakingOut2 .3s linear forwards",
+        tabShakingOut3: "shakingOut3 .3s linear forwards",
         raiseText1: "paddingText1 0s .3s linear forwards",
         raiseText2: "paddingText2 0s .3s linear forwards",
+        delayText: "delayText 1s 4s linear forwards",
       },
     },
   },

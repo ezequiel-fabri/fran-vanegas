@@ -27,7 +27,36 @@ const Header: React.FC = () => {
           </p>
         </div>
       </div>
-      {true && (
+      <div className="absolute bottom-0 z-40 left-1/4">
+        <Image
+          src="/fposing.png"
+          alt="myself-in-cool-pose"
+          height={538}
+          width={354}
+        />
+        {/* <div
+          style={{
+            left: "300px",
+            position: "absolute",
+            bottom: 3,
+            clipPath: "polygon(0px 31%, 100% 0px, 100% 100%, 0px 100%)",
+            transform: "rotate(180deg)",
+            filter: "blur(5px)",
+            background: "rgba(10, 0, 0, 0.4)",
+            width: 500,
+            height: 200,
+          }}
+        /> */}
+      </div>
+      <div className="max-w-none absolute bottom-0 left-1/4 max-[740px]:hidden z-0">
+        <Image
+          src="/fposing_dark.png"
+          alt="my-shadow-in-cool-pose"
+          height={994}
+          width={788}
+        />
+      </div>
+      {false && (
         <div className="h-full w-full -mt-[60px] max-w-[1000px] mx-auto relative pointer-events-none z-0 min-[980px]:z-10">
           <Image
             src="/fposing.png"
@@ -56,9 +85,6 @@ const Header: React.FC = () => {
               UX/UI Designer specializing in design (and occasionallydeveloping)
               exeptional digital expereneces.
             </p>
-            <i className="text-[12px] text-white absolute left-[-24px] bottom-10">
-              Born as a Designer, Illustrator as a hobby and Novelist at night.
-            </i>
           </div>
         </div>
       )}

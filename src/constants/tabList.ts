@@ -5,7 +5,6 @@ export interface Tab {
   title?: string;
   backTitle?: string;
   backTitleColor?: string;
-  classes?: string;
   url: string;
   tabColor: string;
   sectionColor: string;
@@ -23,7 +22,7 @@ export const tabs: Tab[] = [
     url: "/fdrawing.png",
     tabColor: "bg-[#FCD07D]",
     sectionColor: "bg-[#FCD07D]",
-    level: 1,
+    level: 4,
   },
   {
     id: 1,
@@ -35,7 +34,7 @@ export const tabs: Tab[] = [
     url: "/fdrawing2.png",
     tabColor: "bg-[#FBDEA7]",
     sectionColor: "bg-[#FBDEA7]",
-    level: 2,
+    level: 3,
   },
   {
     id: 2,
@@ -47,19 +46,18 @@ export const tabs: Tab[] = [
     url: "/fdrawing2.png",
     tabColor: "bg-[#FAECD1]",
     sectionColor: "bg-[#FAECD1]",
-    level: 3,
+    level: 2,
   },
-  // {
-  //   id: 3,
-  //   chapter: "III",
-  //   text: "Chapter 3. Starting my Multimedia Designer Journey",
-  //   title: "Training arc",
-  //   backTitle: "鍛錬の弧",
-  //   backTitleColor: "text-[#F8DEAF]",
-  //   classes: "",
-  //   url: "/fdrawing2.png",
-  //   tabColor: "bg-[#1A1A1A]",
-  //   sectionColor: "bg-[#1A1A1A]",
-  //   level: 4,
-  // },
+  {
+    id: 3,
+    chapter: "IV",
+    text: "Chapter 4. Starting my Multimedia Designer Journey",
+    title: "God mode",
+    backTitle: "神の力、主人公の覚醒",
+    backTitleColor: "text-[#2C2C2C]",
+    url: "/fdrawing2.png",
+    tabColor: "bg-[#1A1A1A]",
+    sectionColor: "bg-[#1A1A1A]",
+    level: 1,
+  },
 ];
