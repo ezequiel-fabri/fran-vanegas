@@ -1,17 +1,17 @@
 import { useEffect, useRef } from "react";
 
-interface IAnimatedTitleProps {
-  nextChapter?: string;
-  caption?: string;
-  small?: boolean;
-}
+const animationData: { [key: number]: string } = {
+  0: "chapter1.json",
+  1: "chapter2.json",
+};
 
 let animation: any;
 
-export const Chapter2: React.FC<{
+export const AnimatedTitle: React.FC<{
   children: React.ReactNode;
   active: boolean;
-}> = ({ children }) => {
+  tabId: number;
+}> = ({ children, active, tabId }) => {
   const animatedDiv = useRef(null);
   useEffect(() => {
     let w: any = window;
@@ -20,37 +20,10 @@ export const Chapter2: React.FC<{
       rederer: "svg",
       loop: false,
       autoplay: true,
-      path: "/data_animacion1.json",
+      path: animationData[tabId],
     });
     return () => animation.destroy();
-  }, []);
-  return (
-    <div className={`flex flex-col items-center justify-center mx-auto`}>
-      <p className="font-bold leading-3 opacity-0 animate-delayText">
-        {children}
-      </p>
-      <div ref={animatedDiv} className="w-[320px] h-[40px] mx-auto"></div>
-    </div>
-  );
-};
-
-export const Chapter3: React.FC<{
-  children: React.ReactNode;
-}> = ({ children }) => {
-  const animatedDiv = useRef(null);
-  useEffect(() => {
-    let w: any = window;
-    animation = w.bodymovin.loadAnimation({
-      container: animatedDiv.current,
-      rederer: "svg",
-      loop: false,
-      autoplay: false,
-      path: "/data.json",
-    });
-    animation.play();
-    return () => animation.destroy();
-  }, []);
-
+  }, [tabId]);
   return (
     <div className={`flex flex-col items-center justify-center mx-auto`}>
       <p className="font-bold leading-3 opacity-0 animate-delayText">
@@ -58,7 +31,7 @@ export const Chapter3: React.FC<{
       </p>
       <div
         ref={animatedDiv}
-        className="w-[320px] h-[73px] mt-[-29px] mx-auto"
+        className="-mt-[38px] w-[320px] min-h-[81.58px] mx-auto"
       ></div>
     </div>
   );

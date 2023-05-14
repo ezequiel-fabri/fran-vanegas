@@ -3,7 +3,7 @@ import Image from "next/image";
 import Tabs from "./tabs";
 import { tabs, Tab as Tab } from "@/constants/tabList";
 import ChapterTitle from "./chapter.title";
-import { Chapter2, Chapter3 } from "./animated.title";
+import { AnimatedTitle } from "./animated.title";
 
 const CareerPanel = () => {
   const [currentTabs, setCurrentTabs] = useState<Tab[]>(tabs);
@@ -44,10 +44,9 @@ const CareerPanel = () => {
         className={`${sectionColor} transition-background duration-150 relative pt-20 pb-5 z-30 shadow-2`}
       >
         <div className="container px-6 mx-auto max-w-[1300px]">
-          {activeTab.id === 0 && (
-            <Chapter2 active={activeTab.id === 0}>CHAPTER {chapter}</Chapter2>
-          )}
-          {activeTab.id === 1 && <Chapter3>CHAPTER {chapter}</Chapter3>}
+          <AnimatedTitle active={activeTab.id === 0} tabId={activeTab.id}>
+            CHAPTER {chapter}
+          </AnimatedTitle>
           <h1 className="font-bold text-center text-4xl my-20 mb-28 text-textBlack inline-block w-full uppercase relative">
             <span
               className={`pointer-events-none whitespace-nowrap tracking-wide text-[120px] z-0 ${backTitleColor} font-bold absolute left-1/2 -translate-x-1/2`}

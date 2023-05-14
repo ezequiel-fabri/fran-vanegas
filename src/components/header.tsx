@@ -51,6 +51,7 @@ const Header: React.FC = () => {
       <div className="max-w-none absolute bottom-0 left-1/4 max-[740px]:hidden z-0">
         <Image
           src="/fposing_dark.png"
+          priority={true}
           alt="my-shadow-in-cool-pose"
           height={994}
           width={788}
