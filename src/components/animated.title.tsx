@@ -1,33 +1,47 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const animationData: { [key: number]: string } = {
   0: "chapter1.json",
   1: "chapter2.json",
 };
 
-let animation: any;
-
 export const AnimatedTitle: React.FC<{
-  children: React.ReactNode;
+  // children: React.ReactNode;
   active: boolean;
   tabId: number;
-}> = ({ children, active, tabId }) => {
+  chapter: string | undefined;
+}> = ({ active, tabId, chapter }) => {
   const animatedDiv = useRef(null);
+  const [animation, setAnimation] = useState<any>(null);
+
   useEffect(() => {
+    // load the animation
     let w: any = window;
-    animation = w.bodymovin.loadAnimation({
+    const anim = w.bodymovin.loadAnimation({
       container: animatedDiv.current,
       rederer: "svg",
       loop: false,
-      autoplay: true,
+      autoplay: false,
       path: animationData[tabId],
     });
-    return () => animation.destroy();
+    setAnimation(anim);
+    return () => anim.destroy();
   }, [tabId]);
+
+  useEffect(() => {
+    if (!animation) return;
+    if (active) animation.play();
+    else animation.stop();
+  }, [active, animation]);
+
   return (
-    <div className={`flex flex-col items-center justify-center mx-auto`}>
+    <div
+      className={`flex flex-col items-center justify-center mx-auto ${
+        !active && "hidden"
+      }`}
+    >
       <p className="font-bold leading-3 opacity-0 animate-delayText">
-        {children}
+        CHAPTER {chapter}
       </p>
       <div
         ref={animatedDiv}

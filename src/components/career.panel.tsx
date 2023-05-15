@@ -44,9 +44,16 @@ const CareerPanel = () => {
         className={`${sectionColor} transition-background duration-150 relative pt-20 pb-5 z-30 shadow-2`}
       >
         <div className="container px-6 mx-auto max-w-[1300px]">
-          <AnimatedTitle active={activeTab.id === 0} tabId={activeTab.id}>
-            CHAPTER {chapter}
-          </AnimatedTitle>
+          <AnimatedTitle
+            active={activeTab.id === 0}
+            tabId={0}
+            chapter={chapter}
+          />
+          <AnimatedTitle
+            active={activeTab.id === 1}
+            tabId={1}
+            chapter={chapter}
+          />
           <h1 className="font-bold text-center text-4xl my-20 mb-28 text-textBlack inline-block w-full uppercase relative">
             <span
               className={`pointer-events-none whitespace-nowrap tracking-wide text-[120px] z-0 ${backTitleColor} font-bold absolute left-1/2 -translate-x-1/2`}
