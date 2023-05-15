@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Tabs from "./tabs";
 import { tabs, Tab as Tab } from "@/constants/tabList";

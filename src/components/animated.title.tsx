@@ -11,8 +11,9 @@ export const AnimatedTitle: React.FC<{
   tabId: number;
   chapter: string | undefined;
 }> = ({ active, tabId, chapter }) => {
-  const animatedDiv = useRef(null);
+  const animatedDiv = useRef<HTMLDivElement | null>(null);
   const [animation, setAnimation] = useState<any>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     // load the animation
@@ -25,14 +26,29 @@ export const AnimatedTitle: React.FC<{
       path: animationData[tabId],
     });
     setAnimation(anim);
-    return () => anim.destroy();
+
+    let observer = new IntersectionObserver(
+      (entries) => {
+        console.log(entries);
+        const [entry] = entries;
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 1.0 }
+    );
+
+    if (animatedDiv.current) observer.observe(animatedDiv.current);
+
+    return () => {
+      anim.destroy();
+      if (observer) observer.disconnect();
+    };
   }, [tabId]);
 
   useEffect(() => {
     if (!animation) return;
-    if (active) animation.play();
+    if (active && isVisible) animation.play();
     else animation.stop();
-  }, [active, animation]);
+  }, [active, animation, isVisible]);
 
   return (
     <div
