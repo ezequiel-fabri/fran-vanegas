@@ -63,7 +63,7 @@ const CareerPanel = () => {
                 isLastChapter ? "text-[#F7F7F7]" : ""
               }`}
             >
-              {title || text}
+              {title}
             </span>
           </h1>
           <div className="relative h-[323px] flex max-w-[1050px] mb-28 mx-auto">
