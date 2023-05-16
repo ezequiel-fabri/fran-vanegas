@@ -58,9 +58,13 @@ const Tabs: React.FC<ITabsProps> = ({ tabs, selectedTab, onSelectTab }) => {
               } cursor-pointer font-bold inline-block w-[58px] h-full relative rounded-t-lg border-[3px] mr-5 group-last:mr-0`}
             >
               <span
-                className={`pt-3 pl-5 absolute inline-block w-[258px] h-[58px] -translate-x-[100px] translate-y-[100px] -rotate-90 overflow-hidden whitespace-nowrap text-ellipsis uppercase`}
+                className={`pt-3 pl-5 absolute inline-block w-[258px] h-[58px] -translate-x-[100px] translate-y-[100px] -rotate-90 overflow-hidden whitespace-nowrap text-ellipsis uppercase pr-3 ${
+                  tab.id === tabs.length - 1 ? "text-white" : "text-current"
+                } ${selectedTab.id === tab.id ? "text-center" : "text-right"}`}
               >
-                {tab.text}
+                {tab.id === selectedTab.id
+                  ? tab.text
+                  : `CHAPTER ${tab.chapter}`}
               </span>
             </div>
           );

@@ -6,7 +6,6 @@ const animationData: { [key: number]: string } = {
 };
 
 export const AnimatedTitle: React.FC<{
-  // children: React.ReactNode;
   active: boolean;
   tabId: number;
   chapter: string | undefined;
@@ -29,7 +28,6 @@ export const AnimatedTitle: React.FC<{
 
     let observer = new IntersectionObserver(
       (entries) => {
-        console.log(entries);
         const [entry] = entries;
         setIsVisible(entry.isIntersecting);
       },

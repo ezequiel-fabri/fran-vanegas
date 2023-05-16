@@ -15,7 +15,7 @@ export const tabs: Tab[] = [
   {
     id: 0,
     chapter: "I",
-    text: "Chapter 1. Starting my Multimedia Designer Journey",
+    text: "Chapter 1. Starting the journey",
     title: "Starting the journey",
     backTitle: "冒険の序章",
     backTitleColor: "text-[#F1C679]",
@@ -27,7 +27,7 @@ export const tabs: Tab[] = [
   {
     id: 1,
     chapter: "II",
-    text: "Chapter 2. Starting my Multimedia Designer Journey",
+    text: "Chapter 2. Ardent hero of Experiences",
     title: "Ardent hero of Experiences",
     backTitle: "炎の体験英雄",
     backTitleColor: "text-[#FFEECE]",
@@ -39,7 +39,7 @@ export const tabs: Tab[] = [
   {
     id: 2,
     chapter: "III",
-    text: "Chapter 3. Starting my Multimedia Designer Journey",
+    text: "Chapter 3. Training arc",
     title: "Training arc",
     backTitle: "鍛錬の弧",
     backTitleColor: "text-[#F8DEAF]",
@@ -51,7 +51,7 @@ export const tabs: Tab[] = [
   {
     id: 3,
     chapter: "IV",
-    text: "Chapter 4. Starting my Multimedia Designer Journey",
+    text: "Chapter 4. God mode",
     title: "God mode",
     backTitle: "神の力、主人公の覚醒",
     backTitleColor: "text-[#2C2C2C]",
