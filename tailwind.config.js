@@ -104,14 +104,6 @@ module.exports = {
             "box-shadow": "3px 3px 0px 1px #000000",
           },
         },
-        paddingText1: {
-          "0%": { "padding-bottom": 0 },
-          "100%": { "padding-left": "200px", "padding-right": "10px" },
-        },
-        paddingText2: {
-          "0%": { "padding-bottom": 0 },
-          "100%": { "padding-left": "180px", "padding-right": "10px" },
-        },
       },
       animation: {
         tabShakingIn1: "shakingIn1 .3s .1s linear both",
@@ -120,8 +112,6 @@ module.exports = {
         tabShakingOut1: "shakingOut1 .3s linear forwards",
         tabShakingOut2: "shakingOut2 .3s linear forwards",
         tabShakingOut3: "shakingOut3 .3s linear forwards",
-        raiseText1: "paddingText1 0s .3s linear forwards",
-        raiseText2: "paddingText2 0s .3s linear forwards",
         delayText: "delayText 1s 4s linear forwards",
       },
     },

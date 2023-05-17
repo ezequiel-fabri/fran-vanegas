@@ -3,6 +3,7 @@ import type { Tab } from "@/constants/tabList";
 interface ITabsProps {
   tabs: Tab[];
   selectedTab: Tab;
+  activeTab: Tab;
   onSelectTab: (tab: Tab) => void;
 }
 
@@ -14,11 +15,6 @@ const shakingOutAnimations: IndexedObj = {
   1: "animate-tabShakingOut1",
   2: "animate-tabShakingOut2",
   3: "animate-tabShakingOut3",
-};
-
-const paddingTextAnimations: IndexedObj = {
-  1: "animate-raiseText1",
-  2: "animate-raiseText2",
 };
 
 const shakingInAnimations: IndexedObj = {
@@ -35,7 +31,12 @@ const zIndex: IndexedObj = {
   4: "z-40",
 };
 
-const Tabs: React.FC<ITabsProps> = ({ tabs, selectedTab, onSelectTab }) => {
+const Tabs: React.FC<ITabsProps> = ({
+  tabs,
+  selectedTab,
+  activeTab,
+  onSelectTab,
+}) => {
   let tabColorLevel1 = tabs.find((tab) => tab.level === 1);
   let tabColorLevel2 = tabs.find((tab) => tab.level === 2);
   let tabColorLevel3 = tabs.find((tab) => tab.level === 3);
@@ -60,11 +61,9 @@ const Tabs: React.FC<ITabsProps> = ({ tabs, selectedTab, onSelectTab }) => {
               <span
                 className={`pt-3 pl-5 absolute inline-block w-[258px] h-[58px] -translate-x-[100px] translate-y-[100px] -rotate-90 overflow-hidden whitespace-nowrap text-ellipsis uppercase pr-3 ${
                   tab.id === tabs.length - 1 ? "text-white" : "text-current"
-                } ${selectedTab.id === tab.id ? "text-center" : "text-right"}`}
+                } ${activeTab.id === tab.id ? "text-center" : "text-right"}`}
               >
-                {tab.id === selectedTab.id
-                  ? tab.text
-                  : `CHAPTER ${tab.chapter}`}
+                {tab.id === activeTab.id ? tab.text : `CHAPTER ${tab.chapter}`}
               </span>
             </div>
           );

@@ -39,6 +39,7 @@ const CareerPanel = () => {
         tabs={currentTabs}
         selectedTab={selectedTab}
         onSelectTab={handleSelectTab}
+        activeTab={activeTab}
       />
       <section
         className={`${sectionColor} transition-background duration-150 relative pt-20 pb-5 z-30 shadow-2`}
@@ -99,18 +100,11 @@ const CareerPanel = () => {
             </div>
             <div className="flex flex-col justify-between flex-1">
               <p
-                className={`font-bold first-letter:text-4xl ${
+                className={`font-medium first-letter:text-4xl ${
                   isLastChapter ? "text-[#F7F7F7]" : ""
                 }`}
               >
-                Cuando tenia 5 años tuve mi primer experiencia con una consola
-                de videojuegos, todos mis amigos estaban locos por comenzar a
-                jugar sin siquiera ver las introducciones brindadas por el mismo
-                juego. Fui el único que se entretuvo apreciando las
-                ilustraciones y narración que contenía la caja del juego. No es
-                acaso la historia lo que nos motiva a aventurarnos en el juego?
-                Tal vez soy full autista, pero tal vez soy un entusiasta por las
-                buenas historias y estoy seguro de que esta es una de ellas.
+                {activeTab.summary}
               </p>
               <button className="w-64 h-14 text-2xl shadow-1 border-3 font-bold py-2 px-4 rounded-lg bg-main rounded-md">
                 See Works

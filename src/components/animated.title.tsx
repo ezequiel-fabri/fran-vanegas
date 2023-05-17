@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const animationData: { [key: number]: string } = {
   0: "chapter1.json",
-  1: "chapter2.json",
+  1: "chapter_2.1.json",
 };
 
 export const AnimatedTitle: React.FC<{
