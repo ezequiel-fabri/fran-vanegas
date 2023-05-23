@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import lottie from "lottie-web";
 
 const animationData: { [key: number]: string } = {
   0: "chapter1.json",
@@ -16,10 +17,10 @@ export const AnimatedTitle: React.FC<{
 
   useEffect(() => {
     // load the animation
-    let w: any = window;
-    const anim = w.bodymovin.loadAnimation({
+    if(!animatedDiv.current) return
+    const anim = lottie.loadAnimation({
       container: animatedDiv.current,
-      rederer: "svg",
+      renderer: 'svg',
       loop: false,
       autoplay: false,
       path: animationData[tabId],
