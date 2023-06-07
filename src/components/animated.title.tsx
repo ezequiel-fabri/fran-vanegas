@@ -3,7 +3,8 @@ import lottie from "lottie-web";
 
 const animationData: { [key: number]: string } = {
   0: "chapter1.json",
-  1: "chapter_2.1.json",
+  1: "ch2.json",
+  2: "chapter3.json"
 };
 
 export const AnimatedTitle: React.FC<{
